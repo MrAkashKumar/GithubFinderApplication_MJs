@@ -1,8 +1,9 @@
 class UI {
     constructor() {
         this.profile = document.getElementById('profile');
+
     }
-    // Show profile
+   
     showProfile(user) {
         //console.log(user);
         this.profile.innerHTML = `
@@ -36,11 +37,11 @@ class UI {
             <div id = "repos"></div>
         `;
     }
-    // Show User Repos
+//
     showRepos(repos){
         let output = '';
 
-        repos.forEach(function(){
+        repos.forEach(function(repo){
             output += `
                 <div class = "card card-body mb-2">
                     <div class = "row">
@@ -48,11 +49,11 @@ class UI {
                             <a href= "${repo.html_url}" target= "_blank">${repo.name}</a>
                         </div>
                         <div class = "col-md-6">
-                        <span class = "badge badge-primary">Stars: ${repo.stargezers_count}
+                        <span class = "badge badge-primary">Stars: ${repo.stargazers_count}
                         </span>
                         <span class = "badge badge-secondary">Watchers: ${repo.watchers}
                         </span>
-                        <span class = "badge badge-success">Forks: ${user.forms_count}
+                        <span class = "badge badge-success">Forks: ${repo.forks}
                         </span>
                         </div>
                     </div>
@@ -65,13 +66,13 @@ class UI {
 
     }
 
-    // Alert message
+   
     showAlert(message, className){
 
 
         this.clearAlert();
 
-        const div = document.createElement('');
+        const div = document.createElement('div');
 
         div.className = className; 
 
@@ -100,7 +101,6 @@ class UI {
         }
     }
 
-    // Clear Profile
     clearProfile(){
         this.profile.innerHTML = '';
         
